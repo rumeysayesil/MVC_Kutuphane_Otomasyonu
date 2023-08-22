@@ -10,6 +10,9 @@ namespace MVC_Kutuphane_Otomasyonu.Entities.Mapping
 {
     public class RollerMap:EntityTypeConfiguration<Roller>
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public RollerMap()
         {
 
