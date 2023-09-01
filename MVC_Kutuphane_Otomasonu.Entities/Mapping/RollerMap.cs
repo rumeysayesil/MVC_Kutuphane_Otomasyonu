@@ -17,6 +17,7 @@ namespace MVC_Kutuphane_Otomasyonu.Entities.Mapping
             this.HasKey(x => x.Id);//Primary Key
             this.Property(x => x.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);//Otomatik artan sayı
             this.Property(x => x.Rol).IsRequired().HasMaxLength(50);
+           
         }
     }
 }

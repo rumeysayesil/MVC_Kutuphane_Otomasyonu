@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MVC_Kutuphane_Otomasonu.Entities")]
+[assembly: AssemblyTitle("MVC_Kutuphane_Otomasyonu.Entities")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("MVC_Kutuphane_Otomasonu.Entities")]
+[assembly: AssemblyProduct("MVC_Kutuphane_Otomasyonu.Entities")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

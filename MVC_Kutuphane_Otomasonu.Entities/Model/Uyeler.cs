@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
+using FluentValidation.Attributes;
+using MVC_Kutuphane_Otomasonu.Entities.Validations;
 
 namespace MVC_Kutuphane_Otomasyonu.Entities.Model
 {
+    [Validator(typeof(UyelerValidator))]
     public class Uyeler
     {
         public int Id { get; set; }
@@ -17,5 +20,6 @@ namespace MVC_Kutuphane_Otomasyonu.Entities.Model
         public string Resim { get; set; }
         public int OkunanKitapSayisi { get; set; }
         public DateTime KayitTarihi{ get; set; }
+        public List <EmanetKitaplar> EmanetKitaplar { get; set; }
     }
 }

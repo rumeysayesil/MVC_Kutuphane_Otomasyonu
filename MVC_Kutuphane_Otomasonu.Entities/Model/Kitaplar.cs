@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
+using FluentValidation.Attributes;
+using MVC_Kutuphane_Otomasonu.Entities.Validations;
 
 namespace MVC_Kutuphane_Otomasyonu.Entities.Model
 {
+    [Validator(typeof(KitaplarValidator))]
     public class Kitaplar
     {
         public int Id { get; set; }
@@ -20,6 +23,12 @@ namespace MVC_Kutuphane_Otomasyonu.Entities.Model
         public  string Aciklama { get; set; }
         public DateTime EklenmeTarihi { get; set; }= DateTime.Now;  
         public DateTime GüncellenmeTarihi { get; set; }=DateTime.Now;   
-        public bool SilindiMi { get; set; }
+        public bool SilindiMi { get; set; }=false;
+
+        public KitapTurleri  KitapTurleri { get; set; }//tekil adlandrma yani bir kitap ancak bir kitap türü kategorisine ait olabilir
+        public List<EmanetKitaplar> EmanetKitaplar{ get; set; }
+        public List<KitapHareketleri> KitapHareketleri { get; set; }
+        public List<KitapKayitHareketleri> KitapKayitHareketleri { get; set; }
+
     }
-}
+} 

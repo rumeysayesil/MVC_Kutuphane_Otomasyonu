@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FluentValidation.Attributes;
+using MVC_Kutuphane_Otomasonu.Entities.Validations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace MVC_Kutuphane_Otomasyonu.Entities.Model
 {
+    [Validator(typeof(KitapHareketleriValidator))]
+
     public class KitapHareketleri
     {
         public int Id { get; set; }
@@ -14,6 +18,7 @@ namespace MVC_Kutuphane_Otomasyonu.Entities.Model
         public int KitapId { get; set; }
         public string YapilanIslem { get; set; }
         public DateTime Tarih { get; set; }
+        public Kitaplar Kitaplar { get; set; }
 
 
 

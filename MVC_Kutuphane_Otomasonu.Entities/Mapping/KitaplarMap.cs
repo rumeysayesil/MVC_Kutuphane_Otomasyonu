@@ -23,6 +23,8 @@ namespace MVC_Kutuphane_Otomasyonu.Entities.Mapping
             this.Property(x => x.YayinEvi).IsRequired().HasMaxLength(150); 
             this.Property(x => x.Aciklama).IsRequired().HasMaxLength(5000);
 
+            this.HasRequired(x=>x.KitapTurleri).WithMany(x=>x.Kitaplar).HasForeignKey(x=>x.KitapTuruId);//WithMany bire çok ilişki demek,burada kitap türleri tablosunu kitaplara bağlıyoruz
+
         }
     }
 }

@@ -25,6 +25,12 @@ namespace MVC_Kutuphane_Otomasyonu.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+
+        }
+        public ActionResult AdminIndex()
+        {
+
+            return View();
         }
     }
 }

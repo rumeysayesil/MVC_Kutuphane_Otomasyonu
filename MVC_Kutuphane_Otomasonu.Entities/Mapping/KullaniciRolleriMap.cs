@@ -9,14 +9,15 @@ using System.Threading.Tasks;
 
 namespace MVC_Kutuphane_Otomasyonu.Entities.Mapping
 {
-    public class KullaniciRolleriMap:EntityTypeConfiguration<KullaniciRolleri>
+    public class KullaniciRolleriMap : EntityTypeConfiguration<KullaniciRolleri>
     {
         public KullaniciRolleriMap()
         {
             this.ToTable("KullaniciRolleri");
             this.HasKey(x => x.Id);//Primary Key
             this.Property(x => x.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);//Otomatik artan sayı
-
+            this.HasRequired(x => x.Kullanicilar).WithMany(x => x.KullaniciRolleri).HasForeignKey(x => x.KullaniciId);
+            this.HasRequired(x => x.Roller).WithMany(x => x.KullaniciRolleri).HasForeignKey(x => x.RolId);
         }
     }
 }

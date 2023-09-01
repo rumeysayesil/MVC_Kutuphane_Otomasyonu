@@ -9,7 +9,7 @@ namespace MVC_Kutuphane_Otomasyonu.Entities.Model.Context
 {
     public class KutuphaneContext : DbContext
     {
-        public KutuphaneContext() : base("Kutuphane")
+        public KutuphaneContext() : base("DbKutuphane")
         {
 
         }
@@ -24,6 +24,7 @@ namespace MVC_Kutuphane_Otomasyonu.Entities.Model.Context
         public DbSet<Kullanicilar> Kullanicilar { get; set; }
         public DbSet<Roller> Roller { get; set; }
         public DbSet<Uyeler> Uyeler { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
