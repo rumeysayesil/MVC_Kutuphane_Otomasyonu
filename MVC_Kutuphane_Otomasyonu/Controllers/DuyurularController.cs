@@ -4,6 +4,7 @@ using MVC_Kutuphane_Otomasyonu.Entities.Model.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Services.Description;
@@ -14,7 +15,7 @@ namespace MVC_Kutuphane_Otomasyonu.Controllers
     {
         // GET: Duyurular
 
-        KutuphaneContext context=new KutuphaneContext();
+        KutuphaneContext context = new KutuphaneContext();
         DuyurularDAL duyurularDAL = new DuyurularDAL();
         public ActionResult Index()
         {
@@ -22,8 +23,8 @@ namespace MVC_Kutuphane_Otomasyonu.Controllers
         }
         public JsonResult DuyuruList()
         {
-            var model = duyurularDAL.GetAll(context); 
-            return Json(model,JsonRequestBehavior.AllowGet);
+            var model = duyurularDAL.GetAll(context);
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
         public JsonResult DuyuruEkle(Duyurular entity)
@@ -31,7 +32,7 @@ namespace MVC_Kutuphane_Otomasyonu.Controllers
             if (ModelState.IsValid)
             {
                 duyurularDAL.InsertorUpdate(context, entity);
-                duyurularDAL.Save(context);
+                duyurularDAL.Save(context);//veritabanına kaydediyor
                 int newRecordId = entity.Id;
 
 
@@ -43,11 +44,55 @@ namespace MVC_Kutuphane_Otomasyonu.Controllers
                 );
             return Json(new { success = false, errors }, JsonRequestBehavior.AllowGet);
         }
+
         public JsonResult DuyuruGetir(int? Id)
         {
-            var model = duyurularDAL.GetByFilter(context, x=>x.Id==Id);
-            return Json(model, JsonRequestBehavior.AllowGet);   
+            var model = duyurularDAL.GetByFilter(context, x => x.Id == Id);
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public JsonResult DuyuruSil(int id)
+        {
+            try
+            {
+                // İlgili Duyuru'yu veritabanından bulun
+                Duyurular duyuru = context.Duyurular.Find(id);
 
+                if (duyuru == null)
+                {
+                    return Json(new { success = false, message = "Duyuru bulunamadı." });
+                }
+
+                // Duyuruyu veritabanından silin
+                context.Duyurular.Remove(duyuru);
+                context.SaveChanges();
+
+                return Json(new { success = true, message = "Duyuru başarıyla silindi." });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "Silme işlemi sırasında bir hata oluştu: " + ex.Message });
+            }
+        }
+        [HttpPost]
+        public JsonResult SeciliDuyuruSil(List<int> selectedIds)
+
+        {
+            if (selectedIds != null)
+            {
+                foreach (int id in selectedIds)
+                {
+                    duyurularDAL.Delete(context, x => x.Id == id);
+                    duyurularDAL.Save(context);
+                }
+
+
+                return Json(new { success = true });
+            }
+
+        return Json(new { success = false });
+
+        }
+        
     }
 }

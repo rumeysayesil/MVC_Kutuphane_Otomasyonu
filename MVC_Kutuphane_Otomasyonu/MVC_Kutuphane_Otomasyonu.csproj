@@ -5215,6 +5215,7 @@
     <Content Include="AdminDashboard\admincast-master\html\tools\gulp\package-lock.json" />
     <Content Include="AdminDashboard\admincast-master\html\tools\gulp\package.json" />
     <Content Include="AdminDashboard\admincast-master\README.md" />
+    <Content Include="libman.json" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -5256,6 +5257,7 @@
     <Content Include="Views\Kitaplar\Ekle.cshtml" />
     <Content Include="Views\Kitaplar\Duzenle.cshtml" />
     <Content Include="Views\Duyurular\Index.cshtml" />
+    <Content Include="Views\Duyurular\_PartialDuyuru.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
