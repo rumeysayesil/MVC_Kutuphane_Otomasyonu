@@ -32,3 +32,11 @@
 .ui-checkboxradio-disabled {
 	pointer-events: none;
 }
+[data-toggle="buttons"] > .btn input[type="radio"],
+[data-toggle="buttons"] > .btn input[type="checkbox"],
+[data-toggle="buttons"] > .btn-group > .btn input[type="radio"],
+[data-toggle="buttons"] > .btn-group > .btn input[type="checkbox"] {
+	position: static;
+	clip: auto;
+	pointer-events: auto;
+}

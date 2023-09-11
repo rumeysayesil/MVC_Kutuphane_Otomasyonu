@@ -22,6 +22,7 @@ namespace MVC_Kutuphane_Otomasyonu.Entities.Model.Context
         public DbSet<KitapTurleri> KitapTurleri { get; set; }
         public DbSet<KullaniciHareketleri> KullaniciHareketleri { get; set; }
         public DbSet<Kullanicilar> Kullanicilar { get; set; }
+        public DbSet<KullaniciRolleri> KullaniciRolleri { get; set; }
         public DbSet<Roller> Roller { get; set; }
         public DbSet<Uyeler> Uyeler { get; set; }
 
