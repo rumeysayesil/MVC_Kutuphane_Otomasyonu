@@ -10,10 +10,24 @@
         kullaniciAdi = modelKullanici.KullaniciAdi;
         adiSoyadi = modelKullanici.AdiSoyadi;
 
-        var modelKullaniciRol = context.KullaniciRolleri.FirstOrDefault(x => x.KullaniciId == modelKullanici.Id);
-        var modelRol = context.Roller.FirstOrDefault(x => x.Id == modelKullaniciRol.RolId);
+        var modelKullaniciRol = context.KullaniciRolleri.Where(x => x.KullaniciId == modelKullanici.Id).ToList();
 
-        rol = modelRol.Rol;
+        foreach(var item in modelKullaniciRol)
+        {
+            var modelRol = context.Roller.Where(x => x.Id == item.RolId).ToList();
+
+            for(int i=0; i<modelRol.Count; i++)
+            {
+                rol += modelRol[i].Rol + ",";
+            }
+        }
+
+        rol = rol.Substring(0, rol.Length - 1);
+
+
+
+
+
     }
 
 

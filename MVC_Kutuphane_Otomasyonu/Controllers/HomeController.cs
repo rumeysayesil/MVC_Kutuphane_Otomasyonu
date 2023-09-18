@@ -8,6 +8,7 @@ namespace MVC_Kutuphane_Otomasyonu.Controllers
 {
     public class HomeController : Controller
     {
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();

@@ -12,6 +12,7 @@ using System.Web.Security;
 
 namespace MVC_Kutuphane_Otomasyonu.Controllers
 {
+    [AllowAnonymous]
     public class KullanicilarController : Controller
     {
         // GET: Kullanicilar
